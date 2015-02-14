@@ -3,7 +3,8 @@
 
 	var productsService = function($rootScope){
 
-		alert("productsService virker ?");
+		// NIHA: Fjernede lige denne alert :-)
+		//alert("productsService virker ?");
 
 		var getProducts = function(){
 			alert("getProducts");

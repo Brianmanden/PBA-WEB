@@ -1,14 +1,26 @@
 (function(){
 	"use strict";
 
-	function productsController($scope){
+	// NIHA: productsService sættes på som dependency, så den er til
+	// rådighed i controlleren
+	function productsController($scope, productsService){
 	//, productsService, cartService){
 
 		//alert("productsController virker ?");
 
+
+		// NIHA: Denne variabel (addToCart) vil ikke være synlig, selvom du har brugt 
+		// revealing module pattern i bunden.
+		// Det skyldes at funktionen productsController ikke instantieres
+		// som et objekt, som productsService gør
 		var addToCart = function(){
 			$scope.test = "addToCart";
 			alert("addToCart");
+		}
+
+		// Tilføjede denne funktion, som kan køres fra product controller i view
+		$scope.addToCart = function(){
+			productsService.getProducts();
 		}
 
 		/*
@@ -57,9 +69,11 @@
 		}
 		*/
 
-		return{
-			addToCart: addToCart
-		}
+
+		// NIHA: Fjerner dette return statement - se kommentar i toppen
+		// return{
+		//	addToCart: addToCart
+		//}
 
 	}
 
