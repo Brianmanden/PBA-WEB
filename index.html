@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Main" class="no-js">
+<head>
+	<title>Webshop</title>
+	<!-- jQuery -->
+	<script type="text/javascript" src="./js/jquery/jquery-1.11.2.min.js"></script>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/bootstrap-theme.min.css">
+	<script src="./js/bootstrap/bootstrap.min.js"></script>
+
+	<!-- tester -->
+	<link rel="stylesheet" href="./css/tester.css">
+
+</head>
+<body ng-controller="MainController">
+
+	<div ng-controller="productsController">
+		{{test}}
+		<button ng-click="addToCart()">klik</button>
+		<button ng-click="getProducts()">klik</button>
+		<button ng-click="productsService()">klik</button>
+	</div>
+
+	<!--
+	<h1>Products</h1>
+	{{error}}
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-md-2">
+				<input type="search" placeholder="Search&hellip;" ng-model="productName" />
+			</div>
+			
+			<div class="col-md-2 pull-right">
+				<h4>Your effin cart:</h4>
+				{{cartStatus}}
+				<p></p>
+				<b ng-click="showCart()" data-toggle="modal" data-target="#cart">Show cart</b>
+			</div>
+		</div>
+
+		<div class="row-group">
+			<ul>
+				<li ng-repeat="catObj in categories">
+					<input type="checkbox" ng-click="categoryChange(catObj.category)">{{catObj.category}}
+				</li>
+			</ul>
+		</div>
+
+		<div class="table-responsive">
+			<table class="table">
+				<tr>
+					<td ng-repeat="product in products | filter:productName | filter:categoryFilter" width="33%">
+						<p><b>{{product.prodTitle}}</b></p>
+						<img ng-src="{{product.prodImg}}" height="125px" />
+						<div class="input-append">					
+							Add:<input class="span2" type="number" ng-model="amount" />
+							<button class="btn" ng-click="addToCart(product, amount)">&hellip;to basket.</button>
+						</div>
+						<p><b>Styrke:</b>{{product.prodPct}} <b>Str.:</b> {{product.prodVol}} cl. <b>Kr:</b> {{product.prodPrice}}</p>
+						<p>{{product.prodDesc}}</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="modal fade" id="cart">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4>Cart contains:</h4>
+					</div>
+					<div class="modal-body">
+						<table>
+							<tr ng-repeat="item in cart">
+								<td><img ng-src="{{item.prodImg}}" width="35" /></td>
+								<td>{{item.prodTitle}}</td>
+								<td>{{item.amount}} &times; {{item.prodPrice}}.-</td>
+								<td> = {{item.amount * item.prodPrice}} .-</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	-->
+	
+	<!-- Angular JS -->
+	<script type="text/javascript" src="./js/angular/angular.min.js"></script>
+	<script type="text/javascript" src="./app/app.module.js"></script>
+	<script type="text/javascript" src="./app/cart/cart.controller.js"></script>
+	<script type="text/javascript" src="./app/cart/cart.service.js"></script>
+	<script type="text/javascript" src="./app/products/products.controller.js"></script>
+	<script type="text/javascript" src="./app/products/products.service.js"></script>
+</body>
+</html>
+<!--
+	TODO:
+		- 	Bruge Angular til at finde object i array ud fra property: id
+		- 	Opdatere antal varer hvis produktet findes i forvejen
+
+		4. It shall be possible to view (open) the content of the cart.
+		5. It shall be possible to go to a checkout page and conclude the order (part 2)
+-->
