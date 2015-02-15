@@ -5,12 +5,28 @@
 
 		$rootScope.addToCart = function(product, amount){
 
+			if($rootScope.cart[product.prodId]){
+				$rootScope.cart[product.prodId]["amount"] += amount;
+			}
+			else{
+				$rootScope.cart[product.prodId] = {
+					prodId: product.prodId,
+					product: product,
+					amount: amount
+				};
+			}
+			updateCartStatus();
+		}
 
-			$rootScope.cart.push(
-				{
-					"prodId": product.prodId, "amount": amount,	"prodTitle": product.prodTitle,	"prodPrice": product.prodPrice, "prodImg": product.prodImg
-				}
-			);
+		$rootScope.lessProd = function(item){
+			if($rootScope.cart[item.prodId]["amount"] > 1){
+				$rootScope.cart[item.prodId]["amount"] -= 1;
+				updateCartStatus();
+			}
+		}
+
+		$rootScope.moreProd = function(item){
+			$rootScope.cart[item.prodId]["amount"] += 1;
 			updateCartStatus();
 		}
 
@@ -24,6 +40,7 @@
 
 				angular.forEach($rootScope.cart, function(cartItem){
 					cartAmount += cartItem.amount;
+					console.log("-1-" + cartItem);
 				});
 
 				if(cartAmount == 1){

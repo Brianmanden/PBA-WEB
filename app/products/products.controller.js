@@ -8,20 +8,14 @@
 		/*
 		$scope.addToCart = function(){
 			productsService.getProducts();
-		}
-		*/
-		/*
+		}		
 		$scope.addToCart = function(){
 			var amount = this.amount;
 			cartService.addProd(product, amount);
 		}
-		*/
-		/*
 		var modelProducts = function(data){
 			$rootScope.products = data;
 		}
-		*/
-		/*
 		productsService.getProducts()
 			.then(modelProducts);
 		*/

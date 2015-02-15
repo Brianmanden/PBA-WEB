@@ -11,7 +11,7 @@
 	<script src="./js/bootstrap/bootstrap.min.js"></script>
 
 	<!-- tester -->
-	<link rel="stylesheet" href="./css/tester.css">
+	<link rel="stylesheet" href="./css/site.css">
 
 </head>
 <body ng-controller="MainController">
@@ -67,12 +67,20 @@
 					<h4>Cart contains:</h4>
 				</div>
 				<div class="modal-body">
-					<table>
+					<table class="table table-hover table-condensed" border="2">
 						<tr ng-repeat="item in cart">
-							<td><img ng-src="{{item.prodImg}}" width="35" /></td>
-							<td>{{item.prodTitle}}</td>
-							<td>{{item.amount}} &times; {{item.prodPrice}}.-</td>
-							<td> = {{item.amount * item.prodPrice}} .-</td>
+							<td>
+								<button ng-click="lessProd(item)" class="btn">
+									<span class="glyphicon glyphicon-minus-sign"></span>
+								</button>
+								<img ng-src="{{item.product.prodImg}}" width="35" />
+								<button ng-click="moreProd(item)" class="btn">
+									<span class="glyphicon glyphicon-plus-sign"></span>
+								</button>
+							</td>
+							<td>{{item.product.prodTitle}}</td>
+							<td>{{item.amount}} &times; {{item.product.prodPrice}}.-</td>
+							<td> = {{item.amount * item.product.prodPrice}} .-</td>
 						</tr>
 					</table>
 				</div>
