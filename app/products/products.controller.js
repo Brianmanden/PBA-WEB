@@ -4,7 +4,7 @@
 	function productsController($scope){
 	//, productsService, cartService){
 
-		//alert("productsController virker ?");
+		alert("productsController virker ?");
 
 		var addToCart = function(){
 			$scope.test = "addToCart";
