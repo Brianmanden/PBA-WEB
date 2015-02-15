@@ -1,40 +1,27 @@
 (function(){
 	"use strict";
 
-	var productsService = function($rootScope){
-
-		// NIHA: Fjernede lige denne alert :-)
-		//alert("productsService virker ?");
-
-		var getProducts = function(){
-			alert("getProducts");
-		}
-		
-		// $http
-
-		/*
-		return $http.get("./app/data/products.json")
-			.then(getProducts, getError);
-		return $http.get("./app/data/categories.json")
-			.then(getCategories, getError);
-
+	var productsService = function($rootScope, $http){
 
 		var getProducts = function(response){
-			$scope.products = response.data;
+			$rootScope.products = response.data;
 		}
+		
 		var getCategories = function(response){
-			$scope.categories = response.data;
+			$rootScope.categories = response.data;
 		}
+		
 		var getError = function(reason){
-			$scope.error = "0.o ... Something broke - " + reason;
+			$rootScope.error = "0.o ... Something broke - " + reason;
 		}
-		*/
+		
+		$http.get("./app/data/products.json")
+			.then(getProducts, getError);
 
-		return {
-			getProducts: getProducts
-			//,
-			//getCategories: getCategories
-		}
+		$http.get("./app/data/categories.json")
+			.then(getCategories, getError);
+
+		return true;
 	}
 
 	angular

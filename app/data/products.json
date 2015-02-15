@@ -6,7 +6,7 @@
 		"prodPct": "5.7",
 		"prodVol": "50",
 		"prodPrice": 4,
-		"prodImg": "./img/AleNo16.png",
+		"prodImg": "./app/img/AleNo16.png",
 		"category": "ale"
 	},
 	{
@@ -16,7 +16,7 @@
 		"prodPct": "5.7",
 		"prodVol": "33",
 		"prodPrice": 7,
-		"prodImg": "./img/HarboeGuldøl.png",
+		"prodImg": "./app/img/HarboeGuldøl.png",
 		"category": "lager"
 	},
 	{
@@ -26,7 +26,7 @@
 		"prodPct": "5.6",
 		"prodVol": "33",
 		"prodPrice": 9,
-		"prodImg": "./img/guld_tuborg.png",
+		"prodImg": "./app/img/guld_tuborg.png",
 		"category": "lager"
 	}
 ]

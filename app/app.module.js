@@ -9,12 +9,14 @@
 		.controller("MainController", MainController)
 		.run(function($rootScope){
 			$rootScope.cartProducts = {};
+			$rootScope.categoriesSelected = new Array();
 		});
 
 
 		function MainController($scope, $http){
+			
+			
 			/*
-			$scope.categoriesSelected = new Array();
 			$scope.amount = 1;
 			$scope.cart = [];
 			$scope.cartStatus = "...is empty baby";

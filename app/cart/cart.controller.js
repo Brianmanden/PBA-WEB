@@ -1,14 +1,11 @@
 (function(){
 	"use strict";
 
-	function cartController($scope){
-		//, cartService){
-	}
+	function cartController($rootScope, cartService){
 
-
-		/*
 		var addProd = function(product, amount ){
-			$scope.cart.push(
+			console.log("cartController.addProd");
+			$rootScope.cart.push(
 				{
 					"prodId": product.prodId,
 					"amount": amount,
@@ -19,7 +16,12 @@
 			);
 			updateCartStatus();
 		}
-		*/
+
+		var showCart = function(){
+			console.log("virker");
+			console.log($scope.cart);
+		}
+	}
 
 		/*
 		var showCart = function(){
@@ -69,6 +71,5 @@
 	angular
 		.module("Main.cart", [])
 		.controller("cartController", cartController);
-
 
 })();
