@@ -21,21 +21,17 @@
 		<h1>Products</h1>
 			{{error}}
 		<div class="container-fluid">
-
-			<!--
 			<div class="row">
 				<div class="col-md-2">
 					<input type="search" placeholder="Search&hellip;" ng-model="productName" />
 				</div>
-				
 				<div class="col-md-2 pull-right">
 					<h4>Your effin cart:</h4>
 					{{cartStatus}}
 					<p></p>
-					<b ng-click="showCart()" data-toggle="modal" data-target="#cart">Show cart</b>
+					<b data-toggle="modal" data-target="#cart">Show cart</b>
 				</div>
 			</div>
-			-->
 
 			<div class="row-group">
 				<ul>
@@ -44,48 +40,47 @@
 					</li>
 				</ul>
 			</div>
-
-			<div class="table-responsive">
-				<table class="table">
-					<tr>
-						<td ng-repeat="product in products | filter:productName | filter:categoryFilter" width="33%">
-							<p><b>{{product.prodTitle}}</b></p>
-							<img ng-src="{{product.prodImg}}" height="125px" />
-							<div class="input-append">					
-								Add:<input class="span2" type="number" ng-model="amount" ng-init="1" />
-								<button class="btn" ng-click="addToCart(product, amount)">&hellip;to basket.</button>
-							</div>
-							<p><b>Styrke:</b>{{product.prodPct}} <b>Str.:</b> {{product.prodVol}} cl. <b>Kr:</b> {{product.prodPrice}}</p>
-							<p>{{product.prodDesc}}</p>
-						</td>
-					</tr>
-				</table>
-			</div>
-
-			<div class="modal fade" id="cart">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h4>Cart contains:</h4>
+		</div>
+		
+		<div ng-controller="cartController" class="table-responsive">
+			<table class="table">
+				<tr>
+					<td ng-repeat="product in products | filter:productName | filter:categoryFilter" width="33%">
+						<p><b>{{product.prodTitle}}</b></p>
+						<img ng-src="{{product.prodImg}}" height="125px" />
+						<div class="input-append">					
+							Add:<input class="span2" type="number" ng-model="amount" ng-init="1" />
+							<button class="btn" ng-click="addToCart(product, amount)">&hellip;to basket.</button>
 						</div>
-						<div class="modal-body">
-							<table>
-								<tr ng-repeat="item in cart">
-									<td><img ng-src="{{item.prodImg}}" width="35" /></td>
-									<td>{{item.prodTitle}}</td>
-									<td>{{item.amount}} &times; {{item.prodPrice}}.-</td>
-									<td> = {{item.amount * item.prodPrice}} .-</td>
-								</tr>
-							</table>
-						</div>
-					</div>
+						<p><b>Styrke:</b>{{product.prodPct}} <b>Str.:</b> {{product.prodVol}} cl. <b>Kr:</b> {{product.prodPrice}}</p>
+						<p>{{product.prodDesc}}</p>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<!-- modal overlay for kurv -->
+	<div class="modal fade" id="cart">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4>Cart contains:</h4>
+				</div>
+				<div class="modal-body">
+					<table>
+						<tr ng-repeat="item in cart">
+							<td><img ng-src="{{item.prodImg}}" width="35" /></td>
+							<td>{{item.prodTitle}}</td>
+							<td>{{item.amount}} &times; {{item.prodPrice}}.-</td>
+							<td> = {{item.amount * item.prodPrice}} .-</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 		</div>
-
 	</div>
+	<!-- /overlay -->
 
-	
 	<!-- Angular JS -->
 	<script type="text/javascript" src="./js/angular/angular.min.js"></script>
 	<script type="text/javascript" src="./app/app.module.js"></script>
@@ -100,9 +95,8 @@
 		- 	Bruge Angular til at finde object i array ud fra property: id
 		- 	Opdatere antal varer hvis produktet findes i forvejen
 	
-	1. The products are listed when the user loads the page. Product images are shown with a few properties like price, size, color, etc.
-	2. The product categories are listed and can be used for sorting/filtering the products.
 	3. It shall be possible to buy a product and put it into a cart. The cart shall be visible at the page.
+	
 	4. It shall be possible to view (open) the content of the cart.
 	5. It shall be possible to go to a checkout page and conclude the order (part 2)
 

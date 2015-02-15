@@ -10,17 +10,13 @@
 		.run(function($rootScope){
 			$rootScope.cartProducts = {};
 			$rootScope.categoriesSelected = new Array();
+			$rootScope.cart = [];
+			$rootScope.amount = 1;
+			$rootScope.cartStatus = "...is empty baby";
 		});
 
 
-		function MainController($scope, $http){
-			
-			
-			/*
-			$scope.amount = 1;
-			$scope.cart = [];
-			$scope.cartStatus = "...is empty baby";
-			*/
+		function MainController($rootScope, $http){
 		}
 
 })();
