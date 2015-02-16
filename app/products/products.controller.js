@@ -1,51 +1,49 @@
 (function(){
 	"use strict";
 
-	function productsController($rootScope, productsService, cartService){
+	function productsController($scope, productsService){
 
-		$rootScope.categoriesSelected = new Array();
+		//, cartService){
 
-		/*
-		$scope.addToCart = function(){
-			productsService.getProducts();
-		}		
-		$scope.addToCart = function(){
-			var amount = this.amount;
-			cartService.addProd(product, amount);
-		}
+		$scope.categoriesSelected = new Array();
+		
 		var modelProducts = function(data){
-			$rootScope.products = data;
+			$scope.products = data;
 		}
-		productsService.getProducts()
-			.then(modelProducts);
-		*/
 
-		$rootScope.categoryChange = function(category){
+		var modelCategories = function(data){
+			$scope.categories = data;
+		}
 
-			var i = $rootScope.categoriesSelected.indexOf(category);
-
+		$scope.categoryChange = function(category){
+			var i = $scope.categoriesSelected.indexOf(category);
 			if(i > -1){
-				$rootScope.categoriesSelected.splice(i, 1);
+				$scope.categoriesSelected.splice(i, 1);
 			}
 			else{
-				$rootScope.categoriesSelected.push(category);
+				$scope.categoriesSelected.push(category);
 			}
-
 		}
 
-		$rootScope.categoryFilter = function(product){
-			if($rootScope.categoriesSelected.length > 0){
-				if($rootScope.categoriesSelected.indexOf(product.category) < 0){
+		$scope.categoryFilter = function(product){
+			if($scope.categoriesSelected.length > 0){
+				if($scope.categoriesSelected.indexOf(product.category) < 0){
 					return;
 				}
 			}
 			return product;
 		}
 
-	}
+		productsService.getProducts()
+			.then(modelProducts);
 
-	angular
-		.module("Main.products", productsController)
+		productsService.getCategories()
+			.then(modelCategories);
+
+	};
+
+	angular.
+		module("Main.products", [])
 		.controller("productsController", productsController);
 
 })();
