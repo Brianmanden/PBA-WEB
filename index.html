@@ -22,40 +22,16 @@
 				<b data-toggle="modal" data-target="#cart"><span class="glyphicon glyphicon-shopping-cart"></span> Vis kurv</b>
 			</p>
 			<p>
-				<b><a href="./app/checkout/checkout.html">Gå til Checkout</a></b>
+				<b><a ng-href="#/checkout/">Gå til checkout</a></b>
 			</p>
 		</div>	
 	</div>
 	<!-- /CART -->
 
 	<div class="table-responsive">
-		<h1>Products</h1>
-		{{error}}
-
-		<!-- SEARCH -->
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-2">
-					<input type="search" placeholder="Search&hellip;" ng-model="productName" />
-				</div>
-			</div>
-		</div>
-		<!-- /SEARCH -->
-
-		<!-- CATEGORIES -->
-		<div class="row-group">
-			<ul>
-				<li ng-repeat="catObj in categories">
-					<input type="checkbox" ng-click="categoryChange(catObj.category)">{{catObj.category}}
-				</li>
-			</ul>
-		</div>
-		<!-- /CATEGORIES -->
-
 		<!-- VIEW -->
 		<div ng-view></div>
 		<!-- /VIEW -->
-
 	</div>
 
 	<!-- MODAL OVERLAY CART -->

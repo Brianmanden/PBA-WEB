@@ -37,12 +37,12 @@
 
 		var updateCartStatus = function(){
 			if($rootScope.cart.length == 0){
-				$rootScope.cartStatus = "...is empty baby";
+				$rootScope.cartStatus = "...er tom";
 			}
 			else{
 				var cartAmount = 0;
 				var cartTotal = 0;
-				var statusStr = "...contains: ";
+				var statusStr = "...indeholder: ";
 
 				angular.forEach($rootScope.cart, function(cartItem){
 					cartAmount += cartItem.amount;
@@ -50,16 +50,18 @@
 				});
 
 				if(cartAmount == 1){
-					statusStr += cartAmount + " item";
+					statusStr += cartAmount + " produkt";
 				}
 				else{
-					statusStr += cartAmount + " items";
+					statusStr += cartAmount + " produkter";
 				}
 
 				$rootScope.cartTotal = cartTotal;
 				$rootScope.cartStatus =  statusStr;
 			}
 		}
+
+
 
 	}
 

@@ -16,7 +16,7 @@
 				})
 				.when("/checkout", {
 					templateUrl: "./app/checkout/checkout.html",
-					controller: "productController"
+					controller: "cartController"
 				})
 				.when("/", {
 					templateUrl: "./app/products/products.html",
