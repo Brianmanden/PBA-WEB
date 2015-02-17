@@ -1,0 +1,91 @@
+<!-- CHECKOUT -->
+<div class="container" ng-controller="cartController">
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-6">
+			<h2>Din bestilling</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-6">
+			<p>Kig listen igennem, ret og godkend.</p>
+			<p>Du har bestilt følgende:</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-6">
+			<table class="table table-hover table-condensed">
+				<tr ng-repeat="item in cart">
+					<td>
+						<button ng-click="delProd(item)" class="btn">
+							<span class="glyphicon glyphicon-remove-sign"></span>
+						</button>
+						<button ng-click="lessProd(item)" class="btn">
+							<span class="glyphicon glyphicon-minus-sign"></span>
+						</button>
+						<img ng-src="{{item.product.prodImg}}" width="35" />
+						<button ng-click="moreProd(item)" class="btn">
+							<span class="glyphicon glyphicon-plus-sign"></span>
+						</button>
+					</td>
+					<td>{{item.product.prodTitle}}</td>
+					<td>{{item.amount}} &times; {{item.product.prodPrice}}.- =</td>
+					<td>{{item.amount * item.product.prodPrice}} .-</td>
+				</tr>
+				<tr>
+					<td colspan="3"><h4>Total:</h4></td>
+					<td><b>{{ cartTotal }}.-</b></td>
+				</tr>
+				<tr><td colspan="5">&nbsp;</td></tr>
+			</table>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-6">
+			<p>Bestillingen sendes til:</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-6">
+			<form role="form">
+				<div class="form-group row">
+					<div class="col-md-5">
+						<label for="fornavn">Fornavn:</label>
+						<input type="text" class="form-control" id="fornavn" />
+					</div>
+					<div class="col-md-7">
+						<label for="efternavn">Efternavn:</label>
+						<input type="text" class="form-control" id="efternavn" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="adr">Adresse:</label>
+					<input type="text" class="form-control" id="adr" />
+				</div>
+				<div class="form-group row">
+					<div class="col-md-3">
+						<label for="postnr">Postnr:</label>
+						<input type="number" class="form-control" id="postnr" />
+					</div>
+					<div class="col-md-9">
+						<label for="by">By:</label>
+						<input type="text" class="form-control" id="by" />
+					</div>
+				
+				</div>
+				<div class="form-group">
+					<label for="email">Emailadresse:</label>
+					<input type="email" class="form-control" id="email" />
+				</div>
+				<button type="submit" class="btn btn-default">Bestil</button>
+			</form>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+</div>
+<!-- /CHECKOUT -->

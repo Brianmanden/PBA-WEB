@@ -1,0 +1,29 @@
+<!-- PRODUCT -->
+<div class="container" ng-controller="productController">
+	<div class="row"><a href="./#/">Tilbage til produkter&hellip;</a></div>
+	<div class="row">
+		<h3>{{ product.prodTitle }}</h3>
+	</div>
+	<div class="row">
+		<div class="col-md-2">
+				<img class="pull-left" ng-src="{{product.prodImg}}" height="125px" />
+				<div class="pull-rig">
+					<p><b>Styrke:</b>{{product.prodPct}} %</p>
+					<p><b>Vol.:</b> {{product.prodVol}} cl.</b></p>
+					<p><b>Pris:</b> kr. {{product.prodPrice}}.-</p>
+				</div>
+		</div>
+		<div class="col-md-3">
+			<p>{{product.prodDesc}}</p>
+		</div>
+		<div class="col-md-2">
+			<div class="input-append">
+				Læg:<input type="number" ng-model="amount" ng-init="1" />
+				<br /><br />
+				<button class="btn" ng-click="addToCart(product, amount)">&hellip;i kurven.</button>
+			</div>
+		</div>
+	</div>
+	<div class="row"><a href="./#/">Tilbage til produkter&hellip;</a></div>
+</div>
+<!-- /PRODUCT -->

@@ -1,0 +1,37 @@
+<div ng-controller="productsController">
+	<h1>Produkter</h1>
+	<!-- SEARCH -->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2">
+				<input type="search" placeholder="Search&hellip;" ng-model="productName" />
+			</div>
+		</div>
+	</div>
+	<!-- /SEARCH -->
+
+	<!-- CATEGORIES -->
+	<div class="row-group">
+		<ul>
+			<li ng-repeat="catObj in categories">
+				<input type="checkbox" ng-click="categoryChange(catObj.category)">{{catObj.category}}
+			</li>
+		</ul>
+	</div>
+	<!-- /CATEGORIES -->
+
+	<!-- PRODUCTS -->
+	<div class="col-md-4" ng-repeat="product in products  | filter:productName | filter:categoryFilter">
+		<a ng-href="#/product/{{product.prodId}}">
+			<h4>{{ product.prodTitle }}</h4>
+		</a>
+		<a ng-href="#/product/{{product.prodId}}">
+			<img ng-src="{{product.prodImg}}" height="125px" />
+		</a>
+		<p><b>Styrke:</b>{{product.prodPct}} %</p>
+		<p><b>Vol.:</b> {{product.prodVol}} cl.</b></p>
+		<p><b>Pris:</b> kr. {{product.prodPrice}}.-</p>
+		<a ng-href="#/product/{{product.prodId}}">Læs mere&hellip;</a>
+	</div>
+	<!-- /PRODUCTS -->
+</div>
