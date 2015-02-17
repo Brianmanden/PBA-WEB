@@ -30,17 +30,23 @@
 			updateCartStatus();
 		}
 
+		$rootScope.delProd = function(item){
+			delete $rootScope.cart[item.prodId];
+			updateCartStatus();
+		}
+
 		var updateCartStatus = function(){
 			if($rootScope.cart.length == 0){
 				$rootScope.cartStatus = "...is empty baby";
 			}
 			else{
 				var cartAmount = 0;
+				var cartTotal = 0;
 				var statusStr = "...contains: ";
 
 				angular.forEach($rootScope.cart, function(cartItem){
 					cartAmount += cartItem.amount;
-					console.log("-1-" + cartItem);
+					cartTotal += cartItem.amount * cartItem["product"]["prodPrice"];
 				});
 
 				if(cartAmount == 1){
@@ -50,6 +56,7 @@
 					statusStr += cartAmount + " items";
 				}
 
+				$rootScope.cartTotal = cartTotal;
 				$rootScope.cartStatus =  statusStr;
 			}
 		}

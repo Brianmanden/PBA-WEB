@@ -1,7 +1,7 @@
 (function(){
 	"use strict";
 
-	var productsService = function($http){
+	var productsService = function($http, $rootScope){
 
 		var getProducts = function(response){
 
@@ -9,36 +9,41 @@
 				.then(
 					function(response){
 						return response.data;
-					}
+					}, getError
 				)
-				//, getError(response))
 		};
 
 		var getCategories = function(response){
 
-
 			return $http.get("./app/data/categories.json")
-				.then(
-					function(response){
-						return response.data;
-					}
-				)
+						.then(function(response){
+							return response.data;
+						}, getError)
 		};
-		
-		/*
-		*
-		*
-			Spørge Niels...
-		*
-		*
-		var getError = function(reason){
-			$rootScope.error = "0.o ... Something broke - " + reason;
-		}
-		*/
 
+		var getProduct = function(prodId){
+			return $http.get("./app/data/products.json")
+						.then(function(response){
+							return findProductInArray(response.data, parseInt(prodId));
+						})
+		}
+
+		var getError = function(reason){
+			console.log(reason);
+		}
+
+		var findProductInArray = function(data, prodId){
+			return data.filter(function(elem){
+				if(elem.prodId === prodId){
+					return elem;
+				}
+			});
+		}
+		
 		return{
 			getProducts: getProducts,
-			getCategories: getCategories
+			getCategories: getCategories,
+			getProduct: getProduct
 		}
 	}
 
@@ -47,5 +52,3 @@
 		.factory('productsService', productsService);
 
 })();
-
-// https://github.com/eaaa/frameworks2015/blob/master/01-product-listing/dev/products/products.service.js

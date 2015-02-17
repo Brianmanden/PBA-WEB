@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="Main" class="no-js">
 <head>
+	<meta charset='utf-8'>
 	<title>Webshop</title>
 	<!-- jQuery -->
 	<script type="text/javascript" src="./js/jquery/jquery-1.11.2.min.js"></script>
@@ -14,15 +15,20 @@
 	<!-- CART -->	
 	<div ng-controller="cartController" class="table-responsive">
 		<div class="col-md-2 pull-right">
-			<h4>Your effin cart:</h4>
+
+			<h4>Din kurv:</h4>
 			{{cartStatus}}
-			<p></p>
-			<b data-toggle="modal" data-target="#cart">Show cart</b>
+			<p>
+				<b data-toggle="modal" data-target="#cart"><span class="glyphicon glyphicon-shopping-cart"></span> Vis kurv</b>
+			</p>
+			<p>
+				<b><a href="./app/checkout/checkout.html">Gå til Checkout</a></b>
+			</p>
 		</div>	
 	</div>
 	<!-- /CART -->
 
-	<div ng-controller="productsController" class="table-responsive">
+	<div class="table-responsive">
 		<h1>Products</h1>
 		{{error}}
 
@@ -46,22 +52,10 @@
 		</div>
 		<!-- /CATEGORIES -->
 
-		<!-- PRODUCTS -->
-		<table class="table">
-			<tr>
-				<td ng-repeat="product in products | filter:productName | filter:categoryFilter" width="33%">
-					<p><b>{{product.prodTitle}}</b></p>
-					<img ng-src="{{product.prodImg}}" height="125px" />
-					<div class="input-append">					
-						Add:<input class="span2" type="number" ng-model="amount" ng-init="1" />
-						<button class="btn" ng-click="addToCart(product, amount)">&hellip;to basket.</button>
-					</div>
-					<p><b>Styrke:</b>{{product.prodPct}} <b>Str.:</b> {{product.prodVol}} cl. <b>Kr:</b> {{product.prodPrice}}</p>
-					<p>{{product.prodDesc}}</p>
-				</td>
-			</tr>
-		</table>
-		<!-- /PRODUCTS -->
+		<!-- VIEW -->
+		<div ng-view></div>
+		<!-- /VIEW -->
+
 	</div>
 
 	<!-- MODAL OVERLAY CART -->
@@ -69,12 +63,15 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h4>Cart contains:</h4>
+					<h4>Din kurv indeholder:</h4>
 				</div>
 				<div class="modal-body">
-					<table class="table table-hover table-condensed" border="2">
+					<table class="table table-hover table-condensed">
 						<tr ng-repeat="item in cart">
 							<td>
+								<button ng-click="delProd(item)" class="btn">
+									<span class="glyphicon glyphicon-remove-sign"></span>
+								</button>
 								<button ng-click="lessProd(item)" class="btn">
 									<span class="glyphicon glyphicon-minus-sign"></span>
 								</button>
@@ -84,9 +81,14 @@
 								</button>
 							</td>
 							<td>{{item.product.prodTitle}}</td>
-							<td>{{item.amount}} &times; {{item.product.prodPrice}}.-</td>
-							<td> = {{item.amount * item.product.prodPrice}} .-</td>
+							<td>{{item.amount}} &times; {{item.product.prodPrice}}.- =</td>
+							<td>{{item.amount * item.product.prodPrice}} .-</td>
 						</tr>
+						<tr>
+							<td colspan="3"><h4>Total:</h4></td>
+							<td><b>{{ cartTotal }}.-</b></td>
+						</tr>
+						<tr><td colspan="5">&nbsp;</td></tr>
 					</table>
 				</div>
 			</div>
@@ -96,19 +98,26 @@
 
 	<!-- Angular JS -->
 	<script type="text/javascript" src="./js/angular/angular.min.js"></script>
+	<script type="text/javascript" src="./node_modules/angular-route/angular-route.min.js"></script>
 	<script type="text/javascript" src="./app/app.module.js"></script>
 	<script type="text/javascript" src="./app/cart/cart.controller.js"></script>
 	<script type="text/javascript" src="./app/cart/cart.service.js"></script>
 	<script type="text/javascript" src="./app/products/products.controller.js"></script>
 	<script type="text/javascript" src="./app/products/products.service.js"></script>
+	<script type="text/javascript" src="./app/products/product.controller.js"></script>
 </body>
 </html>
 <!--
 	TODO:
 		- omskrive til lokale scopes / rootScope
 		- skrive services om til Niels´s forslag på GitHub
-		- Spørge Niels hvor man lægger getError i products.service.js og hvordan man bruger den.
-		- bruge delete til at slette et object i kurven
+			- hvad skal der i cartService ?
+				- metoder til ???
+
+		- checkbox på kategorier
+
+		- knap til checkout
+		- route til checkout
 
 	3. It shall be possible to buy a product and put it into a cart. The cart shall be visible at the page.
 	4. It shall be possible to view (open) the content of the cart.
