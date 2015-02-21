@@ -2,10 +2,6 @@
 	"use strict";
 
 	function productsController($scope, productsService){
-
-		//, cartService){
-
-		$scope.categoriesSelected = new Array();
 		
 		var modelProducts = function(data){
 			$scope.products = data;
@@ -15,23 +11,8 @@
 			$scope.categories = data;
 		}
 
-		$scope.categoryChange = function(category){
-			var i = $scope.categoriesSelected.indexOf(category);
-			if(i > -1){
-				$scope.categoriesSelected.splice(i, 1);
-			}
-			else{
-				$scope.categoriesSelected.push(category);
-			}
-		}
-
-		$scope.categoryFilter = function(product){
-			if($scope.categoriesSelected.length > 0){
-				if($scope.categoriesSelected.indexOf(product.category) < 0){
-					return;
-				}
-			}
-			return product;
+		var updateCategoriesSelected = function(){
+			$scope.categoriesSelected = productsService.getCategoriesSelected();
 		}
 
 		productsService.getProducts()
@@ -39,6 +20,21 @@
 
 		productsService.getCategories()
 			.then(modelCategories);
+
+		var updateCategoriesSelected = function(){
+			$scope.categoriesSelected = productsService.getCategoriesSelected();
+		}
+
+		$scope.productFilter = function(product){
+			return productsService.productFilter(product);
+		}
+
+		$scope.categoryChange = function(category){
+			productsService.categoryChange(category);
+			updateCategoriesSelected();
+		}
+
+		updateCategoriesSelected();
 
 	};
 

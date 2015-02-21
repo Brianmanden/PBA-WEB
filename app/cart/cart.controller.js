@@ -17,7 +17,8 @@
 			}
 			updateCartStatus();
 		}
-
+		
+		/*
 		$rootScope.lessProd = function(item){
 			if($rootScope.cart[item.prodId]["amount"] > 1){
 				$rootScope.cart[item.prodId]["amount"] -= 1;
@@ -34,6 +35,7 @@
 			delete $rootScope.cart[item.prodId];
 			updateCartStatus();
 		}
+		*/
 
 		var updateCartStatus = function(){
 			if($rootScope.cart.length == 0){

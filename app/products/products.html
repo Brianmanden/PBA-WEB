@@ -1,4 +1,4 @@
-<div ng-controller="productsController">
+<div>
 	<h1>Produkter</h1>
 	<!-- SEARCH -->
 	<div class="container-fluid">
@@ -21,7 +21,7 @@
 	<!-- /CATEGORIES -->
 
 	<!-- PRODUCTS -->
-	<div class="col-md-4" ng-repeat="product in products  | filter:productName | filter:categoryFilter">
+	<div class="col-md-4" ng-repeat="product in products  | filter:productName | filter:productFilter">
 		<a ng-href="#/product/{{product.prodId}}">
 			<h4>{{ product.prodTitle }}</h4>
 		</a>
