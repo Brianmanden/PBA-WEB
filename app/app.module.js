@@ -10,6 +10,10 @@
 		.config(
 			function($routeProvider) {
 				$routeProvider
+				.when("/", {
+					templateUrl: "./app/products/products.html",
+					controller: "productsController"
+				})
 				.when("/product/:id", {
 					templateUrl: "./app/products/product.html",
 					controller: "productController"
@@ -18,11 +22,7 @@
 					templateUrl: "./app/checkout/checkout.html",
 					controller: "cartController"
 				})
-				.when("/", {
-					templateUrl: "./app/products/products.html",
-					controller: "productsController"
-				})
-				.otherwise({ redirectTo: "/"});
+				.otherwise({ redirectTo: "/	"});
 			}
 		)
 		.run(function($rootScope){

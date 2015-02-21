@@ -3,8 +3,7 @@
 
 	var productsService = function($http){
 
-		//var categoriesSelected = new Array();
-		var categoriesSelected = [];
+		var categoriesSelected = new Array();
 
 		var getProducts = function(response){
 			return $http.get("./app/data/products.json")

@@ -8,17 +8,19 @@
 			</div>
 		</div>
 	</div>
-	<!-- /SEARCH -->
+	<!--/ SEARCH -->
 
 	<!-- CATEGORIES -->
 	<div class="row-group">
 		<ul>
 			<li ng-repeat="catObj in categories">
-				<input type="checkbox" ng-click="categoryChange(catObj.category)">{{catObj.category}}
+				<label>
+					<input type="checkbox" ng-click="categoryChange(catObj.category)">{{catObj.category}}
+				</label>
 			</li>
 		</ul>
 	</div>
-	<!-- /CATEGORIES -->
+	<!--/ CATEGORIES -->
 
 	<!-- PRODUCTS -->
 	<div class="col-md-4" ng-repeat="product in products  | filter:productName | filter:productFilter">
@@ -33,5 +35,5 @@
 		<p><b>Pris:</b> kr. {{product.prodPrice}}.-</p>
 		<a ng-href="#/product/{{product.prodId}}">Læs mere&hellip;</a>
 	</div>
-	<!-- /PRODUCTS -->
+	<!--/ PRODUCTS -->
 </div>

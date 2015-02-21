@@ -1,69 +1,19 @@
 (function(){
 	"use strict";
 
-	function cartController($rootScope){
+	function cartController($rootScope, $scope, cartService){
 
-		$rootScope.addToCart = function(product, amount){
-
-			if($rootScope.cart[product.prodId]){
-				$rootScope.cart[product.prodId]["amount"] += amount;
-			}
-			else{
-				$rootScope.cart[product.prodId] = {
-					prodId: product.prodId,
-					product: product,
-					amount: amount
-				};
-			}
-			updateCartStatus();
-		}
-		
-		/*
-		$rootScope.lessProd = function(item){
-			if($rootScope.cart[item.prodId]["amount"] > 1){
-				$rootScope.cart[item.prodId]["amount"] -= 1;
-				updateCartStatus();
-			}
+		$scope.delProd = function(item){
+			cartService.delProd(item);
 		}
 
-		$rootScope.moreProd = function(item){
-			$rootScope.cart[item.prodId]["amount"] += 1;
-			updateCartStatus();
+		$scope.moreProd = function(item){
+			cartService.moreProd(item);
 		}
 
-		$rootScope.delProd = function(item){
-			delete $rootScope.cart[item.prodId];
-			updateCartStatus();
+		$scope.lessProd = function(item){
+			cartService.lessProd(item);
 		}
-		*/
-
-		var updateCartStatus = function(){
-			if($rootScope.cart.length == 0){
-				$rootScope.cartStatus = "...er tom";
-			}
-			else{
-				var cartAmount = 0;
-				var cartTotal = 0;
-				var statusStr = "...indeholder: ";
-
-				angular.forEach($rootScope.cart, function(cartItem){
-					cartAmount += cartItem.amount;
-					cartTotal += cartItem.amount * cartItem["product"]["prodPrice"];
-				});
-
-				if(cartAmount == 1){
-					statusStr += cartAmount + " produkt";
-				}
-				else{
-					statusStr += cartAmount + " produkter";
-				}
-
-				$rootScope.cartTotal = cartTotal;
-				$rootScope.cartStatus =  statusStr;
-			}
-		}
-
-
 
 	}
 

@@ -1,5 +1,5 @@
 <!-- PRODUCT -->
-<div class="container" ng-controller="productController">
+<div class="container">
 	<div class="row"><a href="./#/">Tilbage til produkter&hellip;</a></div>
 	<div class="row">
 		<h3>{{ product.prodTitle }}</h3>
@@ -18,7 +18,7 @@
 		</div>
 		<div class="col-md-2">
 			<div class="input-append">
-				Læg:<input type="number" ng-model="amount" ng-init="1" />
+				Læg:<input style="width: 61px;" type="number" ng-model="amount" ng-init="1" />
 				<br /><br />
 				<button class="btn" ng-click="addToCart(product, amount)">&hellip;i kurven.</button>
 			</div>
