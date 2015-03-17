@@ -11,7 +11,7 @@ function gulpConfig() {
 		browserSyncFiles: [
 			client + '**/*', 
 			nodeApp, 
-			server + 'routes/**/*.js',
+			server + 'api/**/*.js',
 			server + 'views/**/*'
 		],
 		browserSyncPort: 4000,

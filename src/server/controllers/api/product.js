@@ -1,5 +1,6 @@
-// Wrap all the methods in an object
+var Products = require('../../models/products');
 
+// Wrap all the methods in an object
 var product = {
   read: function(req, res, next){
     res.json({type: "Read", id: req.params.id});
@@ -14,6 +15,19 @@ var product = {
     res.json({type: "Delete", id: req.params.id});
   },
   getAll: function(req, res, next){
+    console.log("-1-");
+
+    Products.find(function(err, data){
+      console.log("-2-");
+      if(err){
+        console.log("-3-");
+        console.error;
+      }
+      res.json(data);
+    });
+
+
+    /*
     res.json({
       type: "Get all", 
       data: [
@@ -21,6 +35,7 @@ var product = {
         {id: 2, name: "beer2"}
       ]
     });
+    */
   } 
 }
 
