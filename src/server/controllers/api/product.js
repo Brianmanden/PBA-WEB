@@ -6,7 +6,7 @@ var Products = require('../../models/products');
     PUT /product/:id + request body = update one product */
 var product = {
   read: function(req, res, next){
-    res.json({type: "Read", id: req.params.id});
+    res.json({type: "Read", id: req.params.id, tmp: "read"});
   },
   create: function(req, res, next){
     res.send(req.body);

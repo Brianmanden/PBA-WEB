@@ -8,13 +8,14 @@ var express 	 	= require('express'),
 	dbname 			= "angular_mongodb";
 
 // Express setup 
-var app = express();
+var app 			= express();
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Routes set up
-var router 	= express.Router();
-var product = require('./controllers/api/product');
+var router 			= express.Router();
+var product 		= require('./controllers/api/product');
+var index 			= require('./controllers/index');
 
 // Get all products
 router.get('/api/products', product.getAll);
